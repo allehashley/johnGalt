@@ -1,0 +1,9 @@
+//Install on Status for Candidate
+//Run on Init and on Change
+let activeValue = API.getActiveValue();
+if (activeValue === 'DNU' || activeValue ==='Passive') {
+    API.setRequired('customText17', true);
+    API.show('customText17');
+} else {
+    API.hide('customText17');
+}

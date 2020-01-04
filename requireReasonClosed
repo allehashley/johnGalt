@@ -1,0 +1,9 @@
+//Install on Status for all active Job Tracks 
+//Run on Init and on Change
+let activeValue = API.getActiveValue();
+if (activeValue === 'Cancelled-Client' || activeValue === 'Cancelled-John Galt' || activeValue === 'Cancelled' || activeValue === 'Lost' ) {
+    API.setRequired('reasonClosed', true);
+    API.show('reasonClosed');
+} else {
+    API.hide('reasonClosed');
+}

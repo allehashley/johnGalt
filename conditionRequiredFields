@@ -1,0 +1,14 @@
+//Install on Status for Candidate
+//Run on Init and on Change
+let activeValue = API.getActiveValue();
+if (activeValue === 'Active') {
+    API.setRequired('employeeType', true);
+    API.setRequired('customText10', true);.
+    API.setRequired('categoryID', true);
+    API.setRequired('customText6', true);
+} else {
+    API.setRequired('employeeType', false);
+    API.setRequired('customText10', false);.
+    API.setRequired('categoryID', false);
+    API.setRequired('customText6', false);
+}

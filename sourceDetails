@@ -1,0 +1,64 @@
+console.log("form", API.form)
+
+// Test for otherOtherSource in the form if it's there grab the value, otherwise grab it from customText9
+if (API.form.controls.otherOtherSource) {
+    var otherSourceValue = API.getValue('otherOtherSource')
+} else {
+    var otherSourceValue = API.getValue('customText9')
+}
+
+// Look at source, if it's one of the ones we want, set the source list
+switch (API.getValue('source')) {
+    case "College":
+        console.log("College");
+        API.removeControl('otherOtherSource');
+        var otherOtherSourceList = ["George Mason University", "Notre Dame", "Penn State", "Purdue", "Syracuse University", "Tufts University", "UConn", "University of Delaware", "University of Indiana", "University of Maryland", "University of Pittsburgh", "University of Rhode Island", "Virginia Tech"]
+        break;
+    case "User Group":
+        console.log("User Group");
+        API.removeControl('otherOtherSource');
+        var otherOtherSourceList = ["NE-JUG", "BAN-SWUG", "NH-SWUG", "CMA-SWUG", "ME-SWUG", "SQGNE", "SWUG-USA", "WesternMA-SWUG"]
+        break;
+    case "Dice-POSTING":
+    case "Other":
+    case "CareerBuilder-POSTING":
+    case "ClearanceJobs-POSTING":
+    case "Handshake-POSTING":
+    case "Indeed-POSTING":
+    case "Monster-POSTING":
+    case "ResumeLibrary-POSTING":
+        console.log("Other");
+        API.show('customText9');
+        break;
+    default:
+        // Source doesn't match one of the ones we want, so remove otherOtherSource
+        console.log("default");
+        API.setValue('customText9', otherSourceValue) // ***** if we want to keep the value that was in otherOtherSource when switching to a different one.
+        API.removeControl('otherOtherSource');
+        API.hide('customText9');
+}
+
+// if the control isn't there and we need it, we need to add it
+if (!API.form.controls.otherOtherSource && otherOtherSourceList != null) {
+
+    API.addControl('source', {
+            name: 'otherOtherSource',
+            label: 'Other Source',
+            tooltip: '',
+            key: 'key',
+            inputType: "SELECT",
+            options: otherOtherSourceList,
+            interactions: [{
+                event: 'change',
+                script: API => {
+                    API.setValue('customText9', API.getValue('otherOtherSource'))
+                }
+            }]
+        },
+        'BELOW_FIELD',
+        otherSourceValue
+    );
+}
+
+// If we are showing otherOtherSource, hide otherSource
+if (API.form.controls.otherOtherSource) API.hide('customText9');

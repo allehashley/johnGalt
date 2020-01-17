@@ -40,6 +40,7 @@ switch (API.getValue('source')) {
         API.setValue('customText3', otherSourceValue) // ***** if we want to keep the value that was in otherOtherSource when switching to a different one.
         API.removeControl('otherOtherSource');
         API.hide('customText3');
+        API.hide('referredByUserID');
 }
 
 // if the control isn't there and we need it, we need to add it

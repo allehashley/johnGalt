@@ -1,0 +1,10 @@
+  
+//Install on Status for all active Placement Tracks 
+//Run on Init and on Change
+let activeValue = API.getActiveValue();
+if (activeValue === 'Completed' || activeValue === 'Not Completed') {
+    API.setRequired('terminationReason', true);
+    API.show('terminationReason');
+} else {
+    API.hide('terminationReason');
+}

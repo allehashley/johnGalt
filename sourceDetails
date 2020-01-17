@@ -51,7 +51,7 @@ if (!API.form.controls.otherOtherSource && otherOtherSourceList != null) {
             interactions: [{
                 event: 'change',
                 script: API => {
-                    API.setValue('customText9', API.getValue('otherOtherSource'))
+                    API.setValue('customText15', API.getValue('otherOtherSource'))
                 }
             }]
         },

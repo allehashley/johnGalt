@@ -1,10 +1,10 @@
 console.log("form", API.form)
 
-// Test for otherOtherSource in the form if it's there grab the value, otherwise grab it from customText15
+// Test for otherOtherSource in the form if it's there grab the value, otherwise grab it from customText3
 if (API.form.controls.otherOtherSource) {
     var otherSourceValue = API.getValue('otherOtherSource')
 } else {
-    var otherSourceValue = API.getValue('customText15')
+    var otherSourceValue = API.getValue('customText3')
 }
 
 // Look at source, if it's one of the ones we want, set the source list
@@ -28,14 +28,14 @@ switch (API.getValue('source')) {
     case "Monster-POSTING":
     case "ResumeLibrary-POSTING":
         console.log("Other");
-        API.show('customText15');
+        API.show('customText3');
         break;
     default:
         // Source doesn't match one of the ones we want, so remove otherOtherSource
         console.log("default");
-        API.setValue('customText15', otherSourceValue) // ***** if we want to keep the value that was in otherOtherSource when switching to a different one.
+        API.setValue('customText3', otherSourceValue) // ***** if we want to keep the value that was in otherOtherSource when switching to a different one.
         API.removeControl('otherOtherSource');
-        API.hide('customText15');
+        API.hide('customText3');
 }
 
 // if the control isn't there and we need it, we need to add it
@@ -51,7 +51,7 @@ if (!API.form.controls.otherOtherSource && otherOtherSourceList != null) {
             interactions: [{
                 event: 'change',
                 script: API => {
-                    API.setValue('customText15', API.getValue('otherOtherSource'))
+                    API.setValue('customText3', API.getValue('otherOtherSource'))
                 }
             }]
         },
@@ -61,4 +61,4 @@ if (!API.form.controls.otherOtherSource && otherOtherSourceList != null) {
 }
 
 // If we are showing otherOtherSource, hide otherSource
-if (API.form.controls.otherOtherSource) API.hide('customText15');
+if (API.form.controls.otherOtherSource) API.hide('customText3');

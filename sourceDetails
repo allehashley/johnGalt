@@ -30,6 +30,10 @@ switch (API.getValue('source')) {
         console.log("Other");
         API.show('customText3');
         break;
+    case "Referral":
+        console.log("Referral");
+        API.show('referredByUserID');
+        break;
     default:
         // Source doesn't match one of the ones we want, so remove otherOtherSource
         console.log("default");

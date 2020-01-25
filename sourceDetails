@@ -29,10 +29,12 @@ switch (API.getValue('source')) {
     case "ResumeLibrary-POSTING":
         console.log("Other");
         API.show('customText3');
+        API.setRequired('customText3', true);
         break;
     case "Referral":
         console.log("Referral");
-        API.show('referredByUserID');
+        API.show('referredByPerson');
+        API.setRequired('referredByPerson', true);
         break;
     default:
         // Source doesn't match one of the ones we want, so remove otherOtherSource
@@ -40,7 +42,7 @@ switch (API.getValue('source')) {
         API.setValue('customText3', otherSourceValue) // ***** if we want to keep the value that was in otherOtherSource when switching to a different one.
         API.removeControl('otherOtherSource');
         API.hide('customText3');
-        API.hide('referredByUserID');
+        API.hide('referredByPerson');
 }
 
 // if the control isn't there and we need it, we need to add it
@@ -48,7 +50,7 @@ if (!API.form.controls.otherOtherSource && otherOtherSourceList != null) {
 
     API.addControl('source', {
             name: 'otherOtherSource',
-            label: 'Other Source',
+            label: 'Source Details',
             tooltip: '',
             key: 'key',
             inputType: "SELECT",

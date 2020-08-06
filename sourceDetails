@@ -12,7 +12,7 @@ switch (API.getValue('source')) {
     case "College":
         console.log("College");
         API.removeControl('otherOtherSource');
-        var otherOtherSourceList = ["George Mason University", "Notre Dame", "Penn State", "Purdue", "Syracuse University", "Tufts University", "UConn", "University of Delaware", "University of Indiana", "University of Maryland", "University of Pittsburgh", "University of Rhode Island", "Virginia Tech"]
+        var otherOtherSourceList = ["George Mason University", "Notre Dame", "Penn State", "Purdue", "Syracuse University", "Tufts University", "UConn", "UMASS Lowell", "University of Delaware", "University of Indiana", "University of Maryland", "University of Pittsburgh", "University of Rhode Island", "Virginia Tech"]
         break;
     case "User Group":
         console.log("User Group");
